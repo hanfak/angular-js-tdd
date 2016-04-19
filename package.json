@@ -1,0 +1,22 @@
+{
+  "name": "angular-js-tdd",
+  "version": "1.0.0",
+  "description": "makers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanfak/angular-js-tdd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanfak/angular-js-tdd/issues"
+  },
+  "homepage": "https://github.com/hanfak/angular-js-tdd#readme",
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
+}
