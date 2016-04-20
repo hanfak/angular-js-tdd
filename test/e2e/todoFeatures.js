@@ -1,37 +1,35 @@
 describe('Todos tracker', function() {
-  it('has a title', function() {
-    // We don't need to put in the full url as we set baseUrl in our config
+  it('has several ToDos', function() {
     browser.get('/');
-    expect(browser.getTitle()).toEqual('Todos App');
-  });
-  it('has a todo', function() {
-    browser.get('/');
-    var todo = $('#todo');
-    expect(todo.getText()).toContain('ToDo1');
-  });
-  it('has two todos', function(){
-    browser.get('/');
-    var todos = $$('#todo ul');
-    expect(todos.first().getText()).toContain('ToDo1: not completed');
-    expect(todos.last().getText()).toContain('ToDo3: completed');
+    var todos = $$('#todos p');
+    expect(todos.first().getText()).toMatch('ToDo1: completed');
+    expect(todos.last().getText()).toMatch('ToDo2: not completed');
   });
 
-  it('can add a todo', function() {
+  it('can add a ToDo', function() {
     browser.get('/');
-    var todo = $('#todo');
-    var el = element(by.id('button'));
-    var input = element(by.id('input'));
-    input.sendKeys('toDo4');
-    el.click('button');
-    expect(todo.getText()).toContain('toDo4: not completed');
+    $('#new-todo-name').sendKeys("NewTodo");
+    $('#add-todo').click();
+
+    var todo = $$('#todos p').last().getText();
+    expect(todo).toMatch('NewTodo: not completed');
   });
 
-  it('can remove a todo', function(){
+  it('can remove a ToDo', function() {
     browser.get('/');
-    var todo = $('#todo');
-    var button = element(by.id('delete'));
-    button.click('delete');
-    expect(todo.getText()).not.toContain('ToDo3: not completed');
+    var todos = $$('#todos p');
+    var initialCount = todos.count();
+
+    $('#remove-todo').click();
+
+    expect(todos.count()).toEqual(1);
   });
 
+  it('can mark a ToDo as complete', function(){
+    browser.get('/');
+    var todo = $$('#todos p').last();
+    todo.element(by.css('.complete')).click();
+
+    expect(todo.getText()).toMatch("ToDo2: completed");
+  });
 });
