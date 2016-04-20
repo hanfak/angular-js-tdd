@@ -8,4 +8,7 @@ toDoApp.controller('ToDoController', [function(){
     self.toDos.push({text: toDo, completed: false});
   };
 
-  }]);
+  self.delete = function(){
+    self.toDos.pop();
+  };
+}]);

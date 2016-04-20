@@ -26,5 +26,12 @@ describe('Todos tracker', function() {
     expect(todo.getText()).toContain('toDo4: not completed');
   });
 
+  it('can remove a todo', function(){
+    browser.get('/');
+    var todo = $('#todo');
+    var button = element(by.id('delete'));
+    button.click('delete');
+    expect(todo.getText()).not.toContain('ToDo3: not completed');
+  });
 
 });

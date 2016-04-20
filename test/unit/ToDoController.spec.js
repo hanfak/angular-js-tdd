@@ -16,4 +16,9 @@ describe('ToDoController', function() {
     expect(ctrl.toDos).toContain({text: 'ToDo4', completed: false});
   });
 
+  it('can delete a toDo', function(){
+    ctrl.delete();
+    expect(ctrl.toDos).not.toContain({text: 'ToDo3', completed: false});
+  });
+
 });
