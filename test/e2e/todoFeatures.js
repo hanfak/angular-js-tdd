@@ -16,5 +16,15 @@ describe('Todos tracker', function() {
     expect(todo.getText()).toContain('not completed');
   });
 
+  it('can add a todo', function() {
+    browser.get('/');
+    var todo = $('#todo');
+    var el = element(by.id('button'));
+    var input = element(by.id('input'));
+    input.sendKeys('toDo4');
+    el.click('button');
+    expect(todo.getText()).toContain('toDo4: not completed');
+  });
+
 
 });

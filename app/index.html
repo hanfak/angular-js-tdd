@@ -15,7 +15,9 @@
         <li ng-repeat='toDo in controller.toDos'>
           {{ toDo.text }}: {{ toDo.completed ? "completed" : "not completed" }}
         </li>
-      </ul>  
+      </ul>
+      <input id='input' type='text' ng-model='toDoText'>
+      <button id='button' ng-click='controller.add(toDoText)'>Add To Do</button>
     </div>
   </body>
 </html>

@@ -8,7 +8,12 @@ describe('ToDoController', function() {
   }));
 
   it('initialises with a toDo', function() {
-    expect(ctrl.todo).toEqual("ToDo1");
+    expect(ctrl.toDos).toContain({text: 'ToDo1', completed: false});
+  });
+
+  it('can add toDo', function() {
+    ctrl.add('ToDo4');
+    expect(ctrl.toDos).toContain({text: 'ToDo4', completed: false});
   });
 
 });
